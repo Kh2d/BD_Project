@@ -16,7 +16,7 @@ public class Appointment
     private boolean FromReceiver=false;
     
     private static Appointment[] Donors = new Appointment[100];
-    private static int countRTD=0;
+    private static int Donorscount=0;
     private static Appointment[] RTD = new Appointment[100];
     private static int countRTR=0;
     private static Appointment[] App = new Appointment[100];
@@ -134,38 +134,38 @@ public class Appointment
     
         public void AddRTD(Appointment RTD1) 
     {
-        if(countRTD>RTD.length)
+        if(Donorscount>RTD.length)
         {
             System.out.println("ArrayFull");
         }
         else
         {
             
-            RTD[countRTD]=RTD1;
-            countRTD++;
+            RTD[Donorscount]=RTD1;
+            Donorscount++;
         }
     }
 
     public void delRTD(int id)
     {
-        if(countRTD ==0)
+        if(Donorscount ==0)
         {
             System.out.println("There is no Doners");
         }
         else
         {
-            for(int i=0;i<countRTD;i++)
+            for(int i=0;i<Donorscount;i++)
             {
                  if(RTD[i].getAID()==id)
                 {
                     RTD[i]=null;
-                    while(i<(countRTD-1))
+                    while(i<(Donorscount-1))
                     {
                         RTD[i]=RTD[i+1];
                         i++;
                     }
                     RTD[i]=null;
-                    countRTD--;
+                    Donorscount--;
                 }
             }
             
@@ -253,7 +253,7 @@ public class Appointment
     
     public void RTD_To_App(int id)
     {
-        for(int i=0;i<countRTD;i++)
+        for(int i=0;i<Donorscount;i++)
             {
                  if(RTD[i].getAID()==id)
                 {
