@@ -6,11 +6,9 @@ import java.util.Date;
 
 public class Donation 
 {
-   // private Doner[] DonerArray = new Doner [5];
-   // private int ArrayCount=0;
-    private Doner doner;
-    private Receiver receiver;
-    private int Donation_ID=1000;
+    private Human doner;
+    private Human receiver;
+    private int Donation_ID;
     private Date DonationDateTime;
     private int DonerWeight;
     private boolean DonationState=false;
@@ -18,9 +16,9 @@ public class Donation
     private static Donation[] DonationArray = new Donation[100];
     private static int count=0;
     
-     public Donation(Doner n1 , Receiver receiver , int DonerWeight , boolean state )
+     public Donation(Human n1 , Human receiver , int DonerWeight , boolean state )
     {
-        this.Donation_ID=Donation_ID; 
+        
         this.doner=n1;
         this.receiver=receiver;
         this.DonerWeight=DonerWeight;
@@ -28,94 +26,19 @@ public class Donation
         Donation_ID++;
     }
      
-   /* public Donation(Doner n1 , Receiver receiver , int DonerWeight , boolean state )
-    {
-        this.DonerArray[ArrayCount]=n1;
-        this.receiver=receiver;
-        this.DonerWeight=DonerWeight;
-        this.DonationState=state;
-        ArrayCount++;
-    }
-    public Donation(Doner n1 , Doner n2, Receiver receiver , int DonerWeight , boolean state )
-    {
-        this.DonerArray[ArrayCount]=n1;
-        ++ArrayCount;
-        this.DonerArray[ArrayCount]=n2;
-        ++ArrayCount;
-        this.receiver=receiver;
-        this.DonerWeight=DonerWeight;
-        this.DonationState=state;
-    }
-    public Donation(Doner n1 , Doner n2 , Doner n3, Receiver receiver , int DonerWeight , boolean state )
-    {
-        this.DonerArray[ArrayCount]=n1;
-        ++ArrayCount;
-        this.DonerArray[ArrayCount]=n2;
-        ++ArrayCount;
-        this.DonerArray[ArrayCount]=n3;
-        ++ArrayCount;
-        this.receiver=receiver;
-        this.DonerWeight=DonerWeight;
-        this.DonationState=state;
-    }
-
-    public Doner[] getDonerArray() {
-        return DonerArray;
-    }
-
-    public void AddDoner(Doner NewDoner) 
-    {
-        if(ArrayCount>DonerArray.length)
-        {
-            System.out.println("ArrayFull");
-        }
-        else
-        {
-            DonerArray[ArrayCount]=NewDoner;
-            ArrayCount++;
-        }
-    }
-
-    public void del(String username , int id1)
-    {
-        if(ArrayCount ==0)
-        {
-            System.out.println("There is no Doners");
-        }
-        else
-        {
-            for(int i=0;i<ArrayCount;i++)
-            {
-                if(DonerArray[i].getUsername().equals(username))
-                 if(DonerArray[i].getId()==id1)
-                {
-                    DonerArray[i]=null;
-                    while(i<(ArrayCount-1))
-                    {
-                        DonerArray[i]=DonerArray[i+1];
-                        i++;
-                    }
-                    DonerArray[i]=null;
-                    ArrayCount--;
-                }
-            }
-            
-        }
-    }*/
-    
-    public Receiver getReceiver() {
+    public Human getReceiver() {
         return receiver;
     }
 
-    public Doner getDoner() {
+    public Human getDoner() {
         return doner;
     }
 
-    public void setDoner(Doner doner) {
+    public void setDoner(Human doner) {
         this.doner = doner;
     }
 
-    public void setReceiver(Receiver receiver) {
+    public void setReceiver(Human receiver) {
         this.receiver = receiver;
     }
 
@@ -197,6 +120,26 @@ public class Donation
             
         }
     }
+    
+    public String isApproved()
+    {
+        String j=null;
+        if(this.isDonationState())
+        {
+            j="approved";
+        }
+        else
+        {
+            j="unapproved";
+        }
+        return j;
+    }
+
+    @Override
+    public String toString() {
+        return  "\n Doner=" + doner + "\n Receiver=" + receiver + "\n Donation_ID=" + Donation_ID + "\n DonationDateTime=" + DonationDateTime + "\n DonerWeight=" + DonerWeight + "\n DonationState=" + isApproved() ;
+    }
+    
     
     
 }
