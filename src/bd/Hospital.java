@@ -13,6 +13,7 @@ public class Hospital
     private Date start;
     private Date close;
     private Date DateC;
+        
     private static Hospital[] hospitalArray = new Hospital[10];
     private static int count=0;
     public Hospital(String name , String area , String city , String street , int phone , int StartWorksHourse , int StartWorksMin , int CloseWorksHourse , int CloseWorksMin)
@@ -93,9 +94,11 @@ public class Hospital
     
     public void add(Hospital h)
     {
-        if(count>(hospitalArray.length-1))
+        if(count<(hospitalArray.length-1))
+        {
         hospitalArray[count]=h;
         count++;
+        }
     }
     
     public void del(String name)
