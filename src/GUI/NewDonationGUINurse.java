@@ -7,8 +7,8 @@ import java.awt.event.*;
 
 public class NewDonationGUINurse extends JFrame
 {
-    private JPanel p1 , p2 , p3;
-    private JLabel l1, l2 , img1;
+    private JPanel p1 , p2 , p3 , approveDonation;
+    private JLabel l1, l2 , img1 ,img11 , approveDonation1 ;
     private JButton[] b , bu;
     private JLabel[] l;
     private JTextField[] t;
@@ -27,6 +27,24 @@ public class NewDonationGUINurse extends JFrame
         p2.setBounds(0, 0, 800, 100);
         p2.setBackground(Color.white);
         p2.setBorder(BorderFactory.createEtchedBorder());
+        
+        /// 
+        approveDonation = new JPanel(null);
+        approveDonation.setBounds(0, 0, 800, 100);
+        approveDonation.setBackground(Color.white);
+        approveDonation.setBorder(BorderFactory.createEtchedBorder());
+        approveDonation1 = new JLabel("Approve Donation");
+        approveDonation1.setFont(new Font("", 1, 26));
+        approveDonation1.setBounds(305, 40, 230, 30);
+        approveDonation.add(approveDonation1);
+        
+        Icon s11 = new ImageIcon("C:\\Users\\user\\Desktop\\Projects\\OOP Project\\Image\\icon\\2.png");
+        img11 = new JLabel(s11);
+        img11.setBounds(200 , 5 , 90 , 90);
+        approveDonation.add(img11);
+        approveDonation.setVisible(false);
+        add(approveDonation);
+        ///
         
         l1 = new JLabel();
         l1.setFont(new Font("", 0, 20));
@@ -206,40 +224,85 @@ public class NewDonationGUINurse extends JFrame
             @Override
             public void actionPerformed(ActionEvent ae) 
             {
-                p3.setVisible(false);
-                 final JPanel test1 = new JPanel(null);
+                p2.setVisible(false);
+                p3.setVisible(false); // deVisible
+                approveDonation.setVisible(true);
+                //
+                final JPanel test1 = new JPanel(null); //new panel that show
                 test1.setBounds(0,100, 800, 500);
-                test1.setBorder(BorderFactory.createEtchedBorder());
+                //test1.setBorder(BorderFactory.createEtchedBorder());
                // test1.setBackground(Color.white);
-                test1.add(x);
-                
-               JButton bb = new JButton("Clear");
-               bb.setBounds(95 , 265, 70 ,25);                      // Cancel , NExt , Clear Button
+                //test1.add(x);
+                //
+                JPanel DrLogin = new JPanel(null); // fpr login
+                DrLogin.setBounds(267 , 91 , 265 , 318);
+                DrLogin.setBackground(Color.GRAY);
+                DrLogin.setBorder(BorderFactory.createEtchedBorder());
+                DrLogin.add(x);
+                test1.add(DrLogin);
+               ///
+                JLabel Header = new JLabel("Doctor Confirmation");
+                Header.setFont(new Font("Vrinda" , 1 , 18));
+                Header.setBounds(57 , 10 , 151 , 27);
+                Header.setForeground(Color.BLACK);
+                DrLogin.add(Header);
+               ///
+                JSeparator so = new JSeparator();
+                so.setBounds(20 , 40 , 225 , 10 );
+                DrLogin.add(so);
+               ///
+               JLabel Username = new JLabel("UserName :");
+               Username.setForeground(Color.BLACK);
+               Username.setBounds(32 , 55 , 74 , 17); // User Name Things hhhh 
+               DrLogin.add(Username); 
+               
+               JTextField UserNameField = new JTextField();
+               UserNameField.setBounds(32 , 75 , 200 , 30 );
+               DrLogin.add(UserNameField);
+               ///
+                JLabel Password = new JLabel("Password :");
+               Password.setForeground(Color.BLACK);
+               Password.setBounds(32 , 115 , 74 , 17); // Password Things hhhh 
+               DrLogin.add(Password); 
+               
+               JPasswordField PasswordField = new JPasswordField();
+               PasswordField.setBounds(32 , 135 , 200 , 30 );
+               DrLogin.add(PasswordField);
+               ///
+               JButton Conform = new JButton("Confirm");
+               Conform.setBounds(92 , 180, 80 ,25);  
+               DrLogin.add(Conform);
+               
+               ///
+               JButton bb = new JButton("Done");
+               bb.setBounds(92 , 255, 80 ,25);                      // Cancel , NExt , Clear Button
                bb.addActionListener( new ActionListener() {
 
                     @Override
                     public void actionPerformed(ActionEvent ae1) 
                     {
                        test1.setVisible(false);
-                       
+                       approveDonation.setVisible(false);
                        p3.setVisible(true);
+                       p2.setVisible(true);
                     }
                 });
-               test1.add(bb);
+                DrLogin.add(bb);
+               ///
+               
+              
                add(test1);
                 
             }
         });
         
         
-        
-        
-        
         x = new JCheckBox("Approve");
         x.setOpaque(false);                 //  approve area
         x.setFont(new Font("" , 1 , 16));
         x.setForeground(Color.BLACK);
-        x.setBounds(347, 400, 100, 30);
+        x.setBounds(90, 215, 100, 30);
+        x.setEnabled(false);
         x.addItemListener
         ( 
             new ItemListener()
