@@ -7,8 +7,8 @@ import java.awt.event.*;
 
 public class NewDonationGUIDoctor extends JFrame
 {
-    private JPanel p1 , p2;
-    private JLabel l1, l2 , img1;
+    private JPanel p1 , NewDonationPanel;
+    private JLabel l1, NewDonationTitle , NewDonationImage;
     private JButton[] b , bu;
     private JLabel[] l;
     private JTextField[] t;
@@ -23,10 +23,10 @@ public class NewDonationGUIDoctor extends JFrame
         p1.setBounds(800, 0, 200, 600);
         p1.setBackground(new java.awt.Color(204, 204, 204));
         p1.setBorder(BorderFactory.createEtchedBorder());
-        p2 = new JPanel(null);
-        p2.setBounds(0, 0, 800, 100);
-        p2.setBackground(Color.white);
-        p2.setBorder(BorderFactory.createEtchedBorder());
+        NewDonationPanel = new JPanel(null);
+        NewDonationPanel.setBounds(0, 0, 800, 100);
+        NewDonationPanel.setBackground(Color.white);
+        NewDonationPanel.setBorder(BorderFactory.createEtchedBorder());
         
         l1 = new JLabel();
         l1.setFont(new Font("", 0, 20));
@@ -34,15 +34,15 @@ public class NewDonationGUIDoctor extends JFrame
         l1.setIcon(s);
         l1.setBounds(18, 50, 160, 87);
         p1.add(l1);
-        l2 = new JLabel("New Donation");
-        l2.setFont(new Font("", 1, 26));
-        l2.setBounds(305, 40, 190, 30);
-        p2.add(l2);
+        NewDonationTitle = new JLabel("New Donation");
+        NewDonationTitle.setFont(new Font("", 1, 26));
+        NewDonationTitle.setBounds(305, 40, 190, 30);
+        NewDonationPanel.add(NewDonationTitle);
         
         Icon s1 = new ImageIcon("C:\\Users\\user\\Desktop\\Projects\\OOP Project\\Image\\icon\\bd+.png");
-        img1 = new JLabel(s1);
-        img1.setBounds(200 , 5 , 90 , 90);
-        p2.add(img1);
+        NewDonationImage = new JLabel(s1);
+        NewDonationImage.setBounds(200 , 5 , 90 , 90);
+        NewDonationPanel.add(NewDonationImage);
         
         b = new JButton[4];
         b[0] = new JButton("Home");
@@ -61,7 +61,7 @@ public class NewDonationGUIDoctor extends JFrame
             p1.add(b1);
         }
         add(p1);
-        add(p2);
+        add(NewDonationPanel);
         
        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
