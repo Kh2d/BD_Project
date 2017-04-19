@@ -10,11 +10,12 @@ import java.awt.event.*;
 public class NurseSystemGUImain extends JFrame
 {
     
-    private JPanel MainPanel , NursePanel , NurseSys , newDonationNurse , newDonationHeader , approveDonation , test1 , DonationReportHeader , DonationReport;
-    private JButton[] b ,bu ,buDonationR ;  
-    private JLabel[] l ,lDonationR ;
-    private JTextField[] t , tDonationR;
+    private JPanel MainPanel , NursePanel , NurseSys , newDonationNurse , newDonationHeader , approveDonation , test1 , DonationReportHeader , DonationReport ,ProfileHeader , ProfilePanel;
+    private JButton[] b ,bu ,buDonationR,ProfileButton ;  
+    private JLabel[] l ,lDonationR , ProfileLabel;
+    private JTextField[] t , tDonationR , ProfileTextField;
     private JCheckBox x ;
+    private JRadioButton[] RedioGender;
     private JSeparator[] se , seDonationR;
     private JButton  NewDonationButton , SearchButton;
     private JLabel l1, l2 , img1 , approveImage , approveDonationTitle , DonationReportTitle , DonationReportImage ; //NewDonationTitle , NewDonationImage;
@@ -60,6 +61,13 @@ public class NurseSystemGUImain extends JFrame
                          NursePanel.setVisible(true);
                          NurseSys.setVisible(true);
                }
+              else if(ProfileHeader.isVisible() && ProfilePanel.isVisible())
+               {
+                         ProfileHeader.setVisible(false);
+                         ProfilePanel.setVisible(false);
+                         NursePanel.setVisible(true);
+                         NurseSys.setVisible(true);
+               }
                else
                {
                    
@@ -69,6 +77,237 @@ public class NurseSystemGUImain extends JFrame
         ///
         b[1]= new JButton("Profile");
         b[1].setBounds(18, 245, 160, 40);
+        b[1].addActionListener( new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                /////////////////////////////////////////////////////////
+                 if(newDonationHeader.isVisible() && newDonationNurse.isVisible())
+               {
+                        newDonationNurse.setVisible(false);
+                         newDonationHeader.setVisible(false);
+               }
+              else if(approveDonation.isVisible() && test1.isVisible())
+               {
+                         approveDonation.setVisible(false);
+                         test1.setVisible(false);
+                        
+               }
+              else if(NursePanel.isVisible() && NurseSys.isVisible())
+               {
+                        NursePanel.setVisible(false);
+                NurseSys.setVisible(false);
+               }
+               else
+               {
+                   
+               }
+                
+                
+                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ProfileHeader = new JPanel(null);
+                ProfileHeader.setBounds(0, 0, 800, 100);
+                ProfileHeader.setBackground(Color.white);
+                ProfileHeader.setBorder(BorderFactory.createEtchedBorder());
+                JLabel ProfileTitle = new JLabel("Profile");
+                ProfileTitle.setFont(new Font("", 1, 26));
+                ProfileTitle.setBounds(305, 40, 190, 30);
+                ProfileHeader.add(ProfileTitle);
+
+                ImageIcon pic = new ImageIcon("ProfileIcon.png");
+                Image pic1 = pic.getImage().getScaledInstance(pic.getIconWidth(), pic.getIconHeight(),Image.SCALE_SMOOTH);
+                ImageIcon ProfileImage1 = new ImageIcon(pic1);
+                JLabel ProfileImage = new JLabel(ProfileImage1);
+                ProfileImage.setBounds(200 , 5 , 90 , 90);
+                ProfileHeader.add(ProfileImage);
+                add(ProfileHeader);
+                //////////////////////////////////////////////////////////////////
+                 ///
+                ProfilePanel = new JPanel(null);
+                ProfilePanel.setBounds(0,100, 800, 600);
+                ProfilePanel.setBackground(Color.gray);
+                add(ProfilePanel);
+                ///
+
+                ProfileButton = new JButton[5];    //-1
+                ProfileLabel =new JLabel[10];      //+1
+                ProfileTextField = new JTextField[14]; //+1
+                RedioGender = new JRadioButton[2];
+                //ProfileSeparator = new JSeparator[3]; //-1
+
+
+                ///
+
+                ProfileLabel[0]= new JLabel("Name :");
+                ProfileLabel[0].setForeground(Color.BLACK);
+                ProfileLabel[0].setFont(new Font("", 0, 16));
+                ProfileLabel[0].setBounds(15 , 50 , 90 , 23);
+
+                ProfileTextField[0] = new JTextField();
+                ProfileTextField[0].setBounds(107 , 50 ,90 ,23 );
+                ProfileTextField[0].setEditable(false);
+                ProfileTextField[1] = new JTextField();
+                ProfileTextField[1].setBounds(200 , 50 ,90 ,23 ); //Name//
+                ProfileTextField[1].setEditable(false);
+                ProfileTextField[2] = new JTextField();
+                ProfileTextField[2].setBounds(293 , 50 ,90 ,23 );
+                ProfileTextField[2].setEditable(false);
+
+                ///
+
+                ProfileLabel[1]= new JLabel("ID :");
+                ProfileLabel[1].setForeground(Color.BLACK);
+                ProfileLabel[1].setFont(new Font("", 0, 16));
+                ProfileLabel[1].setBounds(15 , 93 , 90 , 23);//Donor ID
+                ProfileTextField[3] = new JTextField();
+                ProfileTextField[3].setBounds(107 , 93 ,275 ,23 );
+                ProfileTextField[3].setEditable(false);
+                ProfileTextField[3].setEditable(false);
+
+                ///
+
+                ProfileLabel[2]= new JLabel("Blood Type :");
+                ProfileLabel[2].setForeground(Color.BLACK);
+                ProfileLabel[2].setFont(new Font("", 0, 16));
+                ProfileLabel[2].setBounds(15 , 136 , 90 , 23);
+
+                ProfileTextField[4] = new JTextField();
+                ProfileTextField[4].setBounds(227 , 136 ,35 ,23 );
+                ProfileTextField[4].setEditable(false);
+
+                ///
+                ProfileLabel[3]= new JLabel("Age :");
+                ProfileLabel[3].setForeground(Color.BLACK);
+                ProfileLabel[3].setFont(new Font("", 0, 16));
+                ProfileLabel[3].setBounds(15 , 179 , 90 , 23);//Donor Age
+
+                 ProfileTextField[5] = new JTextField();
+                 ProfileTextField[5].setBounds(227 , 179 ,35 ,23 );  
+                 ProfileTextField[5].setEditable(false);
+
+                 ///
+
+                ProfileLabel[4]=new JLabel("GENDER:");
+                ProfileLabel[4].setForeground(Color.BLACK);
+                ProfileLabel[4].setFont(new Font("", 0, 16));
+                ProfileLabel[4].setBounds(15 , 222 , 140 , 23);
+
+                ButtonGroup bG = new ButtonGroup();
+                RedioGender[0] = new JRadioButton("Male" , true);
+                RedioGender[0].setBounds(190 , 222 ,55 ,23 );
+                RedioGender[1] = new JRadioButton("Female" );
+                RedioGender[1].setBounds(245 , 222 ,70 ,23 );
+                for(JRadioButton x :RedioGender ) { bG.add(x); x.setEnabled(false);}
+                ProfilePanel.add( RedioGender[0]);
+                 ProfilePanel.add( RedioGender[1]);
+        //        ProfileTextField[6] = new JTextField();
+        //        ProfileTextField[6].setBounds(190 , 222 ,50 ,23 );
+
+                ////
+
+                ProfileLabel[5]=new JLabel("Phone:");
+                ProfileLabel[5].setForeground(Color.BLACK);
+                ProfileLabel[5].setFont(new Font("", 0, 16));
+                ProfileLabel[5].setBounds(15 , 265 , 140 , 23);
+
+                ProfileTextField[6] = new JTextField();
+                ProfileTextField[6].setBounds(107 , 265 ,275 ,23 );
+
+
+                ///
+
+                ProfileLabel[6]=new JLabel("Area :");
+                ProfileLabel[6].setForeground(Color.BLACK);
+                ProfileLabel[6].setFont(new Font("", 0, 16));
+                ProfileLabel[6].setBounds(15 , 308 , 140 , 23);
+
+                ProfileTextField[7] = new JTextField();
+                ProfileTextField[7].setBounds(107 , 308 ,275 ,23 );
+
+                ///
+
+                ProfileLabel[7]=new JLabel("Birth Date :");
+                ProfileLabel[7].setForeground(Color.BLACK);
+                ProfileLabel[7].setFont(new Font("", 0, 16));
+                ProfileLabel[7].setBounds(15 , 351 , 140 , 23);
+
+                ProfileTextField[8] = new JTextField();
+                ProfileTextField[8].setBounds(190 , 351 ,50 ,23 );
+                ProfileTextField[9] = new JTextField();
+                ProfileTextField[9].setBounds(243 , 351 ,35 ,23 ); //Appointment Date//
+                ProfileTextField[10] = new JTextField();
+                ProfileTextField[10].setBounds(281 , 351 ,35 ,23 );
+
+                ////
+                ProfileLabel[9]=new JLabel("Date Join :");
+                ProfileLabel[9].setForeground(Color.BLACK);
+                ProfileLabel[9].setFont(new Font("", 0, 16));
+                ProfileLabel[9].setBounds(15 , 394 , 140 , 23);
+
+                ProfileTextField[11] = new JTextField();
+                ProfileTextField[11].setBounds(190 , 394 ,50 ,23 );
+                ProfileTextField[11].setEditable(false);
+                ProfileTextField[12] = new JTextField();
+                ProfileTextField[12].setBounds(243 , 394 ,35 ,23 ); //Appointment Date//
+                ProfileTextField[12].setEditable(false);
+                ProfileTextField[13] = new JTextField();
+                ProfileTextField[13].setBounds(281 , 394 ,35 ,23 );
+                ProfileTextField[13].setEditable(false);
+
+                ///
+                ImageIcon PersonPic = new ImageIcon("");
+                Image PersonPic1 = PersonPic.getImage().getScaledInstance(PersonPic.getIconWidth(), PersonPic.getIconHeight(),Image.SCALE_SMOOTH);
+                ImageIcon PersonProfileImage = new ImageIcon(PersonPic1);
+                ProfileLabel[8]=new JLabel(PersonProfileImage);
+                ProfileLabel[8].setBounds(600 , 25 , 170 , 200);
+                ProfileLabel[8].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+                ProfileButton[0] = new JButton("Add");
+                ProfileButton[0].setBounds(600, 235, 65, 30);
+                ProfileButton[1] = new JButton("Remove");
+                ProfileButton[1].setBounds(685, 235, 80, 30);
+              
+
+                ///
+                ProfileButton[2] = new JButton("Change Password");
+                ProfileButton[2].setBounds(325, 465, 150, 25);
+                
+
+                ProfileButton[3] = new JButton("Update");
+                ProfileButton[3].setBounds(690, 465, 100, 25);
+               
+
+                ProfileButton[4] = new JButton("Back");
+                ProfileButton[4].setBounds(15, 465, 100, 25);
+                ProfileButton[4].addActionListener( new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent ae) 
+                    {
+                         ProfileHeader.setVisible(false);
+                         ProfilePanel.setVisible(false);
+                         NurseSys.setVisible(true);
+                         NursePanel.setVisible(true);
+                    }
+                });
+
+                for (JButton b2 : ProfileButton) 
+                    {
+                         ProfilePanel.add(b2); // Back , Update , Change Password
+                    }
+
+                    for(JLabel JL : ProfileLabel)
+                    {
+                        ProfilePanel.add(JL); // Labels
+                    }
+                    for(JTextField JTF : ProfileTextField)
+                    {
+                        ProfilePanel.add(JTF); // TextFeiled
+                    }
+
+                    }
+        });
         ///
         b[2]= new JButton("History");
         b[2].setBounds(18, 290, 160, 40);
@@ -662,6 +901,301 @@ public class NurseSystemGUImain extends JFrame
         SearchButton = new JButton("Search");
         SearchButton.setToolTipText("To brows the history of any participant");
         SearchButton.setBounds(430, 200, 160, 60);
+        SearchButton.addActionListener( new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent ae) 
+            {
+                        NurseSys.setVisible(false);
+                        NursePanel.setVisible(false); // deVisible
+                        //
+                        approveDonation = new JPanel(null);
+                        approveDonation.setBounds(0, 0, 800, 100);
+                        approveDonation.setBackground(Color.white);
+                        approveDonation.setBorder(BorderFactory.createEtchedBorder());
+                        approveDonationTitle = new JLabel("Search a person");
+                        approveDonationTitle.setFont(new Font("", 1, 26));
+                        approveDonationTitle.setBounds(305, 40, 230, 30);
+                        approveDonation.add(approveDonationTitle);
+
+                        Icon s11 = new ImageIcon(getClass().getResource("Search.png"));
+                        approveImage = new JLabel(s11);
+                        approveImage.setBounds(200 , 1 , 98 , 98);
+                        approveDonation.add(approveImage);
+                        add(approveDonation);
+                        //
+                        test1 = new JPanel(null); //new panel that show
+                        test1.setBounds(0,100, 800, 500);
+                        //test1.setBorder(BorderFactory.createEtchedBorder());
+                       // test1.setBackground(Color.white);
+                        //test1.add(x);
+                        //
+                        
+                        JPanel DrLogin = new JPanel(null); // fpr login
+                        DrLogin.setBounds(267 , 130 , 265 , 180);
+                        DrLogin.setBackground(Color.GRAY);
+                        DrLogin.setBorder(BorderFactory.createEtchedBorder());
+                        test1.add(DrLogin);
+                       ///
+                        JLabel Header = new JLabel("Enter ID to get result");
+                        Header.setFont(new Font("Vrinda" , 1 , 18));
+                        Header.setBounds(50 , 10 , 200 , 27);
+                        Header.setForeground(Color.BLACK);
+                        DrLogin.add(Header);
+                       ///
+                        JSeparator so = new JSeparator();
+                        so.setBounds(20 , 40 , 225 , 10 );
+                        DrLogin.add(so);
+                       ///
+                       JLabel Username = new JLabel("ID :");
+                       Username.setForeground(Color.BLACK);
+                       Username.setBounds(32 , 55 , 74 , 17); // User Name Things hhhh 
+                       DrLogin.add(Username); 
+
+                       JTextField UserNameField = new JTextField();
+                       UserNameField.setBounds(32 , 75 , 200 , 30 );
+                       DrLogin.add(UserNameField);
+                       ///
+                       
+                       JButton Conform = new JButton("Find");
+                       Conform.setBounds(92 , 130, 80 ,25);  
+                       Conform.addActionListener( new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent ae) 
+                            {
+                                    /////////////////////////////////////////////////////////
+                              approveDonation.setVisible(false);
+                              test1.setVisible(false);
+                
+                
+                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                ProfileHeader = new JPanel(null);
+                ProfileHeader.setBounds(0, 0, 800, 100);
+                ProfileHeader.setBackground(Color.white);
+                ProfileHeader.setBorder(BorderFactory.createEtchedBorder());
+                JLabel ProfileTitle = new JLabel("Profile");
+                ProfileTitle.setFont(new Font("", 1, 26));
+                ProfileTitle.setBounds(305, 40, 190, 30);
+                ProfileHeader.add(ProfileTitle);
+
+                ImageIcon pic = new ImageIcon("ProfileIcon.png");
+                Image pic1 = pic.getImage().getScaledInstance(pic.getIconWidth(), pic.getIconHeight(),Image.SCALE_SMOOTH);
+                ImageIcon ProfileImage1 = new ImageIcon(pic1);
+                JLabel ProfileImage = new JLabel(ProfileImage1);
+                ProfileImage.setBounds(200 , 5 , 90 , 90);
+                ProfileHeader.add(ProfileImage);
+                add(ProfileHeader);
+                //////////////////////////////////////////////////////////////////
+                 ///
+                ProfilePanel = new JPanel(null);
+                ProfilePanel.setBounds(0,100, 800, 600);
+                ProfilePanel.setBackground(Color.gray);
+                add(ProfilePanel);
+                ///
+
+                ProfileButton = new JButton[5];    //-1
+                ProfileLabel =new JLabel[10];      //+1
+                ProfileTextField = new JTextField[14]; //+1
+                RedioGender = new JRadioButton[2];
+                //ProfileSeparator = new JSeparator[3]; //-1
+
+
+                ///
+
+                ProfileLabel[0]= new JLabel("Name :");
+                ProfileLabel[0].setForeground(Color.BLACK);
+                ProfileLabel[0].setFont(new Font("", 0, 16));
+                ProfileLabel[0].setBounds(15 , 50 , 90 , 23);
+
+                ProfileTextField[0] = new JTextField();
+                ProfileTextField[0].setBounds(107 , 50 ,90 ,23 );
+                ProfileTextField[0].setEditable(false);
+                ProfileTextField[1] = new JTextField();
+                ProfileTextField[1].setBounds(200 , 50 ,90 ,23 ); //Name//
+                ProfileTextField[1].setEditable(false);
+                ProfileTextField[2] = new JTextField();
+                ProfileTextField[2].setBounds(293 , 50 ,90 ,23 );
+                ProfileTextField[2].setEditable(false);
+
+                ///
+
+                ProfileLabel[1]= new JLabel("ID :");
+                ProfileLabel[1].setForeground(Color.BLACK);
+                ProfileLabel[1].setFont(new Font("", 0, 16));
+                ProfileLabel[1].setBounds(15 , 93 , 90 , 23);//Donor ID
+                ProfileTextField[3] = new JTextField();
+                ProfileTextField[3].setBounds(107 , 93 ,275 ,23 );
+                ProfileTextField[3].setEditable(false);
+                ProfileTextField[3].setEditable(false);
+
+                ///
+
+                ProfileLabel[2]= new JLabel("Blood Type :");
+                ProfileLabel[2].setForeground(Color.BLACK);
+                ProfileLabel[2].setFont(new Font("", 0, 16));
+                ProfileLabel[2].setBounds(15 , 136 , 90 , 23);
+
+                ProfileTextField[4] = new JTextField();
+                ProfileTextField[4].setBounds(227 , 136 ,35 ,23 );
+                ProfileTextField[4].setEditable(false);
+
+                ///
+                ProfileLabel[3]= new JLabel("Age :");
+                ProfileLabel[3].setForeground(Color.BLACK);
+                ProfileLabel[3].setFont(new Font("", 0, 16));
+                ProfileLabel[3].setBounds(15 , 179 , 90 , 23);//Donor Age
+
+                 ProfileTextField[5] = new JTextField();
+                 ProfileTextField[5].setBounds(227 , 179 ,35 ,23 );  
+                 ProfileTextField[5].setEditable(false);
+
+                 ///
+
+                ProfileLabel[4]=new JLabel("GENDER:");
+                ProfileLabel[4].setForeground(Color.BLACK);
+                ProfileLabel[4].setFont(new Font("", 0, 16));
+                ProfileLabel[4].setBounds(15 , 222 , 140 , 23);
+
+                ButtonGroup bG = new ButtonGroup();
+                RedioGender[0] = new JRadioButton("Male" , true);
+                RedioGender[0].setBounds(190 , 222 ,55 ,23 );
+                RedioGender[1] = new JRadioButton("Female" );
+                RedioGender[1].setBounds(245 , 222 ,70 ,23 );
+                for(JRadioButton x :RedioGender ) { bG.add(x); x.setEnabled(false);}
+                ProfilePanel.add( RedioGender[0]);
+                 ProfilePanel.add( RedioGender[1]);
+        //        ProfileTextField[6] = new JTextField();
+        //        ProfileTextField[6].setBounds(190 , 222 ,50 ,23 );
+
+                ////
+
+                ProfileLabel[5]=new JLabel("Phone:");
+                ProfileLabel[5].setForeground(Color.BLACK);
+                ProfileLabel[5].setFont(new Font("", 0, 16));
+                ProfileLabel[5].setBounds(15 , 265 , 140 , 23);
+
+                ProfileTextField[6] = new JTextField();
+                ProfileTextField[6].setBounds(107 , 265 ,275 ,23 );
+
+
+                ///
+
+                ProfileLabel[6]=new JLabel("Area :");
+                ProfileLabel[6].setForeground(Color.BLACK);
+                ProfileLabel[6].setFont(new Font("", 0, 16));
+                ProfileLabel[6].setBounds(15 , 308 , 140 , 23);
+
+                ProfileTextField[7] = new JTextField();
+                ProfileTextField[7].setBounds(107 , 308 ,275 ,23 );
+
+                ///
+
+                ProfileLabel[7]=new JLabel("Birth Date :");
+                ProfileLabel[7].setForeground(Color.BLACK);
+                ProfileLabel[7].setFont(new Font("", 0, 16));
+                ProfileLabel[7].setBounds(15 , 351 , 140 , 23);
+
+                ProfileTextField[8] = new JTextField();
+                ProfileTextField[8].setBounds(190 , 351 ,50 ,23 );
+                ProfileTextField[9] = new JTextField();
+                ProfileTextField[9].setBounds(243 , 351 ,35 ,23 ); //Appointment Date//
+                ProfileTextField[10] = new JTextField();
+                ProfileTextField[10].setBounds(281 , 351 ,35 ,23 );
+
+                ////
+                ProfileLabel[9]=new JLabel("Date Join :");
+                ProfileLabel[9].setForeground(Color.BLACK);
+                ProfileLabel[9].setFont(new Font("", 0, 16));
+                ProfileLabel[9].setBounds(15 , 394 , 140 , 23);
+
+                ProfileTextField[11] = new JTextField();
+                ProfileTextField[11].setBounds(190 , 394 ,50 ,23 );
+                ProfileTextField[11].setEditable(false);
+                ProfileTextField[12] = new JTextField();
+                ProfileTextField[12].setBounds(243 , 394 ,35 ,23 ); //Appointment Date//
+                ProfileTextField[12].setEditable(false);
+                ProfileTextField[13] = new JTextField();
+                ProfileTextField[13].setBounds(281 , 394 ,35 ,23 );
+                ProfileTextField[13].setEditable(false);
+
+                ///
+                ImageIcon PersonPic = new ImageIcon("");
+                Image PersonPic1 = PersonPic.getImage().getScaledInstance(PersonPic.getIconWidth(), PersonPic.getIconHeight(),Image.SCALE_SMOOTH);
+                ImageIcon PersonProfileImage = new ImageIcon(PersonPic1);
+                ProfileLabel[8]=new JLabel(PersonProfileImage);
+                ProfileLabel[8].setBounds(600 , 25 , 170 , 200);
+                ProfileLabel[8].setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+                ProfileButton[0] = new JButton("Add");
+                ProfileButton[0].setBounds(600, 235, 65, 30);
+                ProfileButton[1] = new JButton("Remove");
+                ProfileButton[1].setBounds(685, 235, 80, 30);
+              
+
+                ///
+                ProfileButton[2] = new JButton("Dispaly the History");
+                ProfileButton[2].setBounds(325, 465, 150, 25);
+                
+
+                ProfileButton[3] = new JButton("Delete Account");
+                ProfileButton[3].setBounds(690, 465, 100, 25);
+               
+
+                ProfileButton[4] = new JButton("Back");
+                ProfileButton[4].setBounds(15, 465, 100, 25);
+                ProfileButton[4].addActionListener( new ActionListener() {
+
+                    @Override
+                    public void actionPerformed(ActionEvent ae) 
+                    {
+                         ProfileHeader.setVisible(false);
+                         ProfilePanel.setVisible(false);
+                         test1.setVisible(true);
+                         approveDonation.setVisible(true);
+                        
+                    }
+                });
+
+                for (JButton b2 : ProfileButton) 
+                    {
+                         ProfilePanel.add(b2); // Back , Update , Change Password
+                    }
+
+                    for(JLabel JL : ProfileLabel)
+                    {
+                        ProfilePanel.add(JL); // Labels
+                    }
+                    for(JTextField JTF : ProfileTextField)
+                    {
+                        ProfilePanel.add(JTF); // TextFeiled
+                    }
+
+                    
+                            }
+                        });
+                       DrLogin.add(Conform);
+                       ///
+                       JButton bb = new JButton("Back");
+                       bb.setBounds(20 , 465, 80 ,25);                      // Cancel , NExt , Clear Button
+                       bb.addActionListener( new ActionListener() {
+
+                            @Override
+                            public void actionPerformed(ActionEvent ae1) 
+                            {
+                               test1.setVisible(false);
+                               approveDonation.setVisible(false);
+                               NursePanel.setVisible(true);
+                               NurseSys.setVisible(true);
+                            }
+                        });
+                        test1.add(bb);
+                       ///
+
+                       add(test1);
+
+            }
+        });
         NurseSys.add(NewDonationButton);
         NurseSys.add(SearchButton);
         /////////////////////////////////////////////////////////
@@ -675,4 +1209,3 @@ public class NurseSystemGUImain extends JFrame
         a.setResizable(false);
     }
 }
-
