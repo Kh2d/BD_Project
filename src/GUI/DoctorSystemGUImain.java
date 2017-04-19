@@ -16,7 +16,7 @@ public class DoctorSystemGUImain extends JFrame
     private JSeparator[] se;
     private JCheckBox x;
     private JButton  NewDonationButton , SearchButton;
-    private JLabel l1, DoctorTitle , DoctorImage , NewDonationTitle , NewDonationImage;;
+    private JLabel l1, DoctorTitle , DoctorImage , NewDonationTitle , NewDonationImage;
     
     public DoctorSystemGUImain()
     {
@@ -131,10 +131,10 @@ public class DoctorSystemGUImain extends JFrame
         ///
         
         
-        bu = new JButton[3];
-        l =new JLabel[14];
-        t= new JTextField[17];
-        se = new JSeparator[3];
+        bu = new JButton[3];    //-1
+        l =new JLabel[14];      //+1
+        t= new JTextField[17]; //+1
+        se = new JSeparator[3]; //-1
         
         l[0]=new JLabel("Appointment Serial :");
         l[0].setForeground(Color.BLACK);
