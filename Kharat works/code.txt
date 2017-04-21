@@ -1,0 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package blood;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.*;
+import static javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION;
+
+public class Blood extends JFrame {
+
+    String[] persons = {"Ahmad Alali - A+ - AlDammam - 0597949795", "person 2", "person 3", "person 4", "person 5","asd","asd","w","r","s","4","s","3","4","3","5","5","sa"};
+
+    public Blood() {
+        super("hi");
+        setLayout(null);
+        JList newList = new JList(persons);
+        JScrollPane scroll;
+        scroll = new JScrollPane(newList);
+        newList.setVisibleRowCount(4);
+        newList.setSelectionMode(MULTIPLE_INTERVAL_SELECTION);
+        scroll.setSize(500, 200);
+        add(scroll);
+        scroll.setBounds(50, 100, 600, 300);
+
+        JButton back = new JButton("back");
+        JButton sendRequest = new JButton("Send Request");
+
+        back.setBounds(100, 500, 100, 30);
+        add(back);
+        sendRequest.setBounds(375, 500, 150, 30);
+        add(sendRequest);
+        sendRequest.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showConfirmDialog(null, "Are you sure you want to send request?", "Confirmation", JOptionPane.YES_NO_OPTION);
+            }
+
+        });
+
+    }
+
+    public static void main(String[] args) {
+        Blood gui = new Blood();
+        gui.setDefaultCloseOperation(EXIT_ON_CLOSE);
+        gui.setSize(1000, 700);
+        gui.setVisible(true);
+        gui.setTitle("BlooDonation");
+
+    }
+
+}

@@ -1,0 +1,79 @@
+For dononrs : 
+
+private static Doner[] DonerArray = new Doner[50];
+    private static int count=0; 
+
+public void add(Doner h)
+    {
+        if(count>(DonerArray.length-1))
+        DonerArray[count]=h;
+        count++;
+    }
+    
+    public void del( int id1)
+    {
+        if(count ==0)
+        {
+            System.out.println("There is no Doners");
+        }
+        else
+        {
+            for(int i=0;i<count;i++)
+            {
+                 if(DonerArray[i].getId()==id1)
+                {
+                    DonerArray[i]=null;
+                    while(i<(count-1))
+                    {
+                        DonerArray[i]=DonerArray[i+1];
+                        i++;
+                    }
+                    DonerArray[i]=null;
+                    count--;
+                }
+            }
+            
+        }
+    }
+
+
+============================================================================================
+For recevier : 
+
+private static Receiver[] ReceiverArray = new Receiver[50];
+    private static int count=0; 
+
+public void add(Receiver h)
+    {
+        if(count>(ReceiverArray.length-1))
+        ReceiverArray[count]=h;
+        count++;
+    }
+    
+    public void del(int id1)
+    {
+        if(count ==0)
+        {
+            System.out.println("There is no Receivers");
+        }
+        else
+        {
+            for(int i=0;i<count;i++)
+            {
+                 if(ReceiverArray[i].getId()==id1)
+                {
+                    ReceiverArray[i]=null;
+                    while(i<(count-1))
+                    {
+                        ReceiverArray[i]=ReceiverArray[i+1];
+                        i++;
+                    }
+                    ReceiverArray[i]=null;
+                    count--;
+                }
+            }
+            
+        }
+    }
+
+

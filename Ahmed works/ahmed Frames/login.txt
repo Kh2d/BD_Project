@@ -1,0 +1,112 @@
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.BorderFactory;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+
+public class LogIn extends JFrame {
+   private final JPanel log_Pass;
+   private final JLabel welcoming;
+    private final JLabel sentence;
+   private final JLabel userLabel;
+   private final JLabel passwordLabel;
+   private final JTextField userNameText;
+  private final JPasswordField passwordField;
+private final JLabel image;
+ private final JButton login;
+private final JButton register;
+ private final JLabel registerLabel;
+ private final JPanel title; 
+ public LogIn ()
+ { 
+    setLayout(null);
+        setSize(700, 500);
+        setResizable(false);
+         getContentPane().setBackground( Color.WHITE);  
+        
+     //the welcoming message labels
+        welcoming=new JLabel("Blood Donation");
+    welcoming.setBounds(200, 30, 550, 30);
+     welcoming.setForeground(Color.red);
+     welcoming.setFont(new Font("Wide Latin",Font.BOLD ,36));
+     
+     sentence=new JLabel(" Save  a Life  Give Blood ");
+     sentence.setBounds(290, 100,400, 30);
+     sentence.setForeground(Color.red);
+      sentence.setFont(new Font("Segoe Print",Font.ITALIC ,28));
+     
+     
+     //   panel to display title 
+       title=new JPanel();
+        title.setBounds(0,0, 1000, 190);
+        title.setLayout(null);
+        title.setBackground(Color.pink);
+        title.setBorder(BorderFactory.createLineBorder(Color.black));
+        add(title);
+        title.add(welcoming);
+        title.add( sentence);
+        
+        
+         //panel for username ,password ,register
+      log_Pass=new JPanel();
+       log_Pass.setBounds(260, 190, 450, 400);
+       log_Pass.setBackground(Color.PINK);
+        log_Pass.setLayout(null);
+         log_Pass.setBorder(BorderFactory.createLineBorder(Color.black));
+     add(log_Pass);
+        
+     
+      userLabel=new JLabel("UserName");
+      userLabel.setBounds(50, 100, 100, 30);
+     log_Pass.add(userLabel);
+     
+     
+      userNameText=new JTextField("    ");
+       userNameText.setBounds(150, 100, 200, 30);
+      log_Pass.add( userNameText);
+  
+        passwordLabel=new JLabel("Password");
+          passwordLabel.setBounds(50, 140, 100, 30);
+          log_Pass.add( passwordLabel);
+        passwordField=new JPasswordField("     ");
+     passwordField.setBounds(150, 140, 200, 30);
+       log_Pass.add( passwordField);
+       
+       
+       login =new JButton("LogIn");
+   login.setBounds(200, 190, 80, 30);
+            login.setBackground(Color.white);
+        log_Pass.add( login);
+        
+        
+        register=new JButton("register");
+   register.setBounds(200, 300, 80,30);
+      register.setBackground(Color.white);
+        log_Pass.add( register);
+        
+        
+        registerLabel=new JLabel("IF you don't have an account create one");
+     registerLabel.setBounds(130, 260, 240, 20);
+       log_Pass.add( registerLabel);
+      
+       
+       //adding image as background
+        image = new JLabel();
+          Icon s = new ImageIcon("C:\\Users\\Dell\\Pictures\\Camera Roll\\ubuntu_pink_background-wallpaper-1366x768.jpg");
+          image.setIcon(s);
+         image.setBounds(0, 0, 1000, 700);
+         
+        add(image);
+       getContentPane().add(image);
+      
+         
+ }
+ 
+ 
+}

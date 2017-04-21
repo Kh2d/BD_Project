@@ -1,0 +1,74 @@
+/* public Donation(Doner n1 , Receiver receiver , int DonerWeight , boolean state )
+    {
+        this.DonerArray[ArrayCount]=n1;
+        this.receiver=receiver;
+        this.DonerWeight=DonerWeight;
+        this.DonationState=state;
+        ArrayCount++;
+    }
+    public Donation(Doner n1 , Doner n2, Receiver receiver , int DonerWeight , boolean state )
+    {
+        this.DonerArray[ArrayCount]=n1;
+        ++ArrayCount;
+        this.DonerArray[ArrayCount]=n2;
+        ++ArrayCount;
+        this.receiver=receiver;
+        this.DonerWeight=DonerWeight;
+        this.DonationState=state;
+    }
+    public Donation(Doner n1 , Doner n2 , Doner n3, Receiver receiver , int DonerWeight , boolean state )
+    {
+        this.DonerArray[ArrayCount]=n1;
+        ++ArrayCount;
+        this.DonerArray[ArrayCount]=n2;
+        ++ArrayCount;
+        this.DonerArray[ArrayCount]=n3;
+        ++ArrayCount;
+        this.receiver=receiver;
+        this.DonerWeight=DonerWeight;
+        this.DonationState=state;
+    }
+
+    public Doner[] getDonerArray() {
+        return DonerArray;
+    }
+
+    public void AddDoner(Doner NewDoner) 
+    {
+        if(ArrayCount>DonerArray.length)
+        {
+            System.out.println("ArrayFull");
+        }
+        else
+        {
+            DonerArray[ArrayCount]=NewDoner;
+            ArrayCount++;
+        }
+    }
+
+    public void del(String username , int id1)
+    {
+        if(ArrayCount ==0)
+        {
+            System.out.println("There is no Doners");
+        }
+        else
+        {
+            for(int i=0;i<ArrayCount;i++)
+            {
+                if(DonerArray[i].getUsername().equals(username))
+                 if(DonerArray[i].getId()==id1)
+                {
+                    DonerArray[i]=null;
+                    while(i<(ArrayCount-1))
+                    {
+                        DonerArray[i]=DonerArray[i+1];
+                        i++;
+                    }
+                    DonerArray[i]=null;
+                    ArrayCount--;
+                }
+            }
+            
+        }
+    }*/

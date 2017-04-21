@@ -1,0 +1,199 @@
+import java.awt.Color;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.*;
+
+public class Register extends JFrame {
+
+    private final JLabel idlabel;
+    private final JLabel fnamelabel;
+    private final JLabel mnamelabel;
+    private final JLabel genderlabel;
+    private final JLabel lnamelabel;
+    private final JLabel passwordlabel;
+    private final JLabel imagee1;
+    private final JLabel confirmPasswordLabel;
+    private final JLabel phoneLabel;
+    private final JLabel BtLabel;
+    private final JLabel areaLabel;
+    private final JLabel dateOBLabel;
+    private final JLabel title;
+    private final JTextField id;
+    private final JTextField fname;
+    private final JTextField mname;
+    private final JTextField lname;
+    private final JTextField password;
+    private final JTextField confirm;
+    private final JTextField phone;
+    private final JRadioButton male;
+    private final JRadioButton female;
+    private final ButtonGroup g;
+    private final JComboBox<String> BT;
+    private final JComboBox dateOB;
+    private final JComboBox<String> area;
+    private final JButton back;
+    private final JButton clear;
+    private final JButton ok;
+    private final JButton add;
+
+    private final JPanel titlePanel;
+    static final String[] blood = {"A", "B", "AB", "O"};
+
+    public Register() {
+        super("Register");
+
+        setLayout(null);
+        setSize(700, 500);
+        setResizable(false);
+        getContentPane().setBackground(Color.pink);
+
+        //panel to display title 
+        titlePanel = new JPanel();
+        titlePanel.setBounds(0, 0, 1000, 80);
+        titlePanel.setBackground(Color.WHITE);
+        titlePanel.setBorder(BorderFactory.createLineBorder(Color.black));
+        titlePanel.setLayout(null);
+        add(titlePanel);
+
+        title = new JLabel("Blood Donation");
+        title.setBounds(270, 20, 550, 40);
+        title.setForeground(Color.red);
+        title.setFont(new Font("Wide Latin", Font.BOLD, 28));
+        titlePanel.add(title);
+
+        //id label and textfield of id
+        idlabel = new JLabel("ID");
+        idlabel.setBounds(20, 100, 150, 40);
+        id = new JTextField(" ");
+        id.setBounds(80, 100, 150, 30);
+        add(idlabel);
+        add(id);
+
+        //firstname label and it is textfield
+        fnamelabel = new JLabel("fname");
+        fnamelabel.setBounds(20, 140, 40, 40);
+        fname = new JTextField(".....");
+        fname.setBounds(80, 140, 150, 30);
+        add(fnamelabel);
+        add(fname);
+
+        //secondtname label and it is textfield
+        mnamelabel = new JLabel("mname");
+        mnamelabel.setBounds(20, 180, 50, 40);
+        mname = new JTextField(".....");
+        mname.setBounds(80, 180, 150, 30);
+        idlabel.setLabelFor(mname);
+        add(mnamelabel);
+        add(mname);
+
+        //lasttname label and it is textfield
+        lnamelabel = new JLabel("lname");
+        lnamelabel.setBounds(20, 220, 50, 40);
+        lname = new JTextField(".....");
+        lname.setBounds(80, 220, 150, 30);
+        idlabel.setLabelFor(lname);
+        add(lnamelabel);
+        add(lname);
+
+        //phonee label and it is textfield
+        phoneLabel = new JLabel("Phone");
+        phoneLabel.setBounds(20, 260, 50, 40);
+        phone = new JTextField(".....");
+        phone.setBounds(80, 260, 150, 30);
+        idlabel.setLabelFor(phone);
+        add(phoneLabel);
+        add(phone);
+
+        //gender radio button      
+        genderlabel = new JLabel("Gender");
+        genderlabel.setBounds(20, 300, 80, 20);
+        male = new JRadioButton("male");
+        male.setBounds(77, 300, 70, 20);
+        female = new JRadioButton("female");
+        female.setBounds(160, 300, 70, 20);
+        g = new ButtonGroup();
+        g.add(male);
+        g.add(female);
+        add(genderlabel);
+
+        //blood type list
+        BT = new JComboBox<String>(blood);
+        BT.setBounds(390, 100, 80, 30);
+        BtLabel = new JLabel("Blood Type");
+        BtLabel.setBounds(300, 100, 80, 30);
+        BtLabel.setLabelFor(BT);
+        add(BtLabel);
+        add(BT);
+
+        // user can add image or set defualt image
+        imagee1 = new JLabel();
+        Icon s = new ImageIcon("C:\\Users\\2150010521\\Downloads\\default-avatar_0.png");
+        imagee1.setIcon(s);
+        imagee1.setBounds(567, 90, 120, 120);
+        imagee1.setBorder(BorderFactory.createEtchedBorder());
+        add(imagee1);
+        add = new JButton("Add");
+        add.setBounds(580, 220, 80, 30);
+
+        //date of birth
+        dateOB = new JComboBox<String>();
+        dateOB.setBounds(390, 140, 80, 30);
+
+        dateOBLabel = new JLabel("Date");
+        dateOBLabel.setBounds(300, 140, 80, 30);
+        add(dateOBLabel);
+        add(dateOB);
+
+        //area list
+        area = new JComboBox<String>();
+        areaLabel = new JLabel("area");
+        areaLabel.setBounds(300, 180, 80, 30);
+        add(areaLabel);
+        area.setBounds(390, 180, 80, 30);
+        add(area);
+
+        // password label and it is field
+        passwordlabel = new JLabel("password");
+        passwordlabel.setBounds(300, 220, 80, 40);
+        password = new JTextField(".....");
+        password.setBounds(390, 220, 150, 30);
+        add(passwordlabel);
+        add(password);
+        //idlabel.setLabelFor(password);
+
+        //confirm password label and it is field
+        confirmPasswordLabel = new JLabel("confirm");
+        confirmPasswordLabel.setBounds(300, 260, 80, 40);
+        confirm = new JTextField(" ");
+        confirm.setBounds(390, 260, 150, 30);
+        idlabel.setLabelFor(confirm);
+        add(confirmPasswordLabel);
+        add(confirm);
+
+        // back to the home page  
+        back = new JButton("Back");
+        back.setBounds(170, 370, 80, 30);
+        add(back);
+        //delet ell information entered
+        clear = new JButton("Clear");
+        clear.setBounds(270, 370, 80, 30);
+        add(clear);
+
+        //save upsates
+        ok = new JButton("Save");
+        ok.setBounds(370, 370, 80, 30);
+        add(ok);
+
+    }
+
+}
